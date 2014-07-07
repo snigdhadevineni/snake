@@ -2,11 +2,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Snake! Levi</title>
+        <title>Snake!</title>
         
 
         <!-- jquery -->
         <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+
+        <!-- cheat script -->
+        <script type="text/javascript" src="cheat.js"></script>
 
     </head>
     <body>
@@ -53,6 +56,8 @@
         var SIZE = 20;              // block size
         var LENGTH = 5;             // length of the snake initially
 
+        var CHEAT;                  // cheat toggle
+
         var running;                // if a game has been started
         var set;                    // if a game is ready
         var turned;                 // to keep from turning more than once per update
@@ -74,6 +79,10 @@
         var head;                   // pointer to head block
 
         function update() {
+
+            // implement cheat
+            if (CHEAT) cheat();
+
             var x = head.x + direction.x;
             var y = head.y + direction.y;
 
@@ -200,6 +209,8 @@
             running = false;        // if a game has been started
             set = false;            // if a game is ready
             turned = false;         // to keep from turning more than once per update
+
+            CHEAT = false;
 
             score = 0;
 
